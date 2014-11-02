@@ -1,0 +1,6 @@
+[submodule "Framework"]
+	path = Framework
+	url = https://github.com/JimmyLord/MyFramework.git
+[submodule "SharedGameCode"]
+	path = SharedGameCode
+	url = https://github.com/JimmyLord/SharedGameCode.git

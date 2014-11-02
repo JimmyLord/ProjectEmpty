@@ -1,0 +1,7 @@
+{
+	"GameType_EmptyReplaceMe":	{
+		"Wide":	"[{\"Name\":\"Quit\",\"X\":69,\"Y\":600,\"Scale\":1,\"SX\":0,\"SY\":0,\"OffX\":0,\"OffY\":0,\"W\":85,\"H\":50,\"IW\":50,\"IH\":50,\"FontHeight\":30,\"BGShadowX\":0,\"BGShadowY\":0,\"TextShadowX\":0,\"TextShadowY\":0}]",
+		"Tall":	"[{\"Name\":\"Quit\",\"X\":51.546200,\"Y\":917.525818,\"Scale\":1,\"SX\":0,\"SY\":0,\"OffX\":0,\"OffY\":0,\"W\":85,\"H\":50,\"IW\":50,\"IH\":50,\"FontHeight\":30,\"BGShadowX\":0,\"BGShadowY\":0,\"TextShadowX\":0,\"TextShadowY\":0}]",
+		"Square":	"[{\"Name\":\"Quit\",\"X\":51.546200,\"Y\":752.577209,\"Scale\":1,\"SX\":0,\"SY\":0,\"OffX\":0,\"OffY\":0,\"W\":85,\"H\":50,\"IW\":50,\"IH\":50,\"FontHeight\":30,\"BGShadowX\":0,\"BGShadowY\":0,\"TextShadowX\":0,\"TextShadowY\":0}]"
+	}
+}

@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{a073e61a-cd6c-4710-9be4-fbab75cb839b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="Data\Shaders">
+      <UniqueIdentifier>{bda7b404-1e93-4453-b86a-9654f24a8858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform">
+      <UniqueIdentifier>{ea084754-889f-49a7-bafb-52356a55685a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - Android">
+      <UniqueIdentifier>{75d864fb-0053-4403-b18b-e961513e5a52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - Android\APK files">
+      <UniqueIdentifier>{150c32e4-3882-4558-98b7-d1844710adff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - Android\Java">
+      <UniqueIdentifier>{caf5fc6f-d923-4706-a87b-4ee57b4932a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - NaCL">
+      <UniqueIdentifier>{2721bf97-177e-4c8c-b05a-dd51ea7e0125}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - NaCL\Web Files">
+      <UniqueIdentifier>{804bf7a8-e405-442f-aa23-6c20ae5833ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - Windows">
+      <UniqueIdentifier>{002809fd-7be1-4802-a623-186361897913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Screens">
+      <UniqueIdentifier>{02cfa051-a10e-433a-975f-aff6b82c0a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core Files">
+      <UniqueIdentifier>{04b87be4-c10b-4886-b392-8ec9a4138392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - IOS">
+      <UniqueIdentifier>{c6c4cfc4-0280-4cee-9972-094ebea07722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - IOS\en.lproj">
+      <UniqueIdentifier>{8857b432-0360-4cc6-bf3c-cde456b072aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - BlackBerry">
+      <UniqueIdentifier>{4a8d8701-3b26-4fc2-b69f-6bd203bcacbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - BlackBerry\src">
+      <UniqueIdentifier>{a9e3301d-10ca-428a-b5d6-bfa0d512d43f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code">
+      <UniqueIdentifier>{b622dad1-7ddc-487b-8748-ce3b5b78a274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code\Core">
+      <UniqueIdentifier>{aefdb8f5-f006-478f-9c76-8b010475cd89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code\Menus">
+      <UniqueIdentifier>{3a3380d2-ffb6-4973-bf00-5c88dfadc6c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code\Screens">
+      <UniqueIdentifier>{f7036839-79cc-4395-b7f1-372ae69ad616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code\Effects">
+      <UniqueIdentifier>{f38dcc23-8dd4-4fcd-bac4-37652fed0ee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameTypes">
+      <UniqueIdentifier>{a90d1503-ea31-46c4-ab42-90e308131a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code\BitsAndPieces">
+      <UniqueIdentifier>{a7a788fd-3eeb-47e8-838a-f2e8089ee54e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code\Camera">
+      <UniqueIdentifier>{294c3d21-8239-48d3-b0d8-3a0875882ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shared Code\Leaderboards">
+      <UniqueIdentifier>{88c9d540-2f34-46b9-930e-0f0b791f63cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - Emscripten">
+      <UniqueIdentifier>{e50c747a-b5d5-47e8-b3b5-b144703add5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source - Platform\Source - WP8">
+      <UniqueIdentifier>{e5550a78-55dc-4dfe-be19-a1ec884306de}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SourceWindows\WinMain.cpp">
+      <Filter>Source - Platform\Source - Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceNaCL\MainModule.cpp">
+      <Filter>Source - Platform\Source - NaCL</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Screens\Screen_Achievements.cpp">
+      <Filter>Source\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Screens\Screen_HowToPlay.cpp">
+      <Filter>Source\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Screens\Screen_LevelSelect.cpp">
+      <Filter>Source\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Screens\Screen_Pause.cpp">
+      <Filter>Source\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Screens\Screen_Stats.cpp">
+      <Filter>Source\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\Achievements.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\GameAudio.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\InputFinger.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\ProfileManager.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\ResourceManager.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\Stats.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\GameCommonHeader.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceBlackBerry\src\bbutil.cpp">
+      <Filter>Source - Platform\Source - BlackBerry\src</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceBlackBerry\src\main.cpp">
+      <Filter>Source - Platform\Source - BlackBerry\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Core\RenderTextQuick.cpp">
+      <Filter>Source\Shared Code\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuButton.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuCheckBox.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuDraggableButton.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuInputBox.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuItem.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuSlider.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuSprite.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuText.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Screens\Screen_Base.cpp">
+      <Filter>Source\Shared Code\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Screens\ScreenManager.cpp">
+      <Filter>Source\Shared Code\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Effects\Effect_Base.cpp">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Effects\Effect_ParticleBurst.cpp">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Effects\Effect_ParticleRisingGlow.cpp">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Effects\Effect_SunRay.cpp">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\ScreenOverlays.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Screens\Screen_Loading.cpp">
+      <Filter>Source\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\GameEmptyReplaceMe.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\GameTypes\GameType_EmptyReplaceMe.cpp">
+      <Filter>Source\GameTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\GameTypes\GameType_Selector.cpp">
+      <Filter>Source\GameTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\BitsAndPieces\ScoreChunk.cpp">
+      <Filter>Source\Shared Code\BitsAndPieces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\LanguageTable.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Camera\Camera2D.cpp">
+      <Filter>Source\Shared Code\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Camera\Camera3D.cpp">
+      <Filter>Source\Shared Code\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCommon\Core\LeaderboardsConfig.cpp">
+      <Filter>Source\Core Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Core\Game_GameServiceManager.cpp">
+      <Filter>Source\Shared Code\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Leaderboards\LeaderboardStorage.cpp">
+      <Filter>Source\Shared Code\Leaderboards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Leaderboards\Screen_Leaderboards.cpp">
+      <Filter>Source\Shared Code\Leaderboards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuScrollBox.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Menus\MenuScrollingText.cpp">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Effects\Effect_ParticleFollowPath.cpp">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Effects\Effect_ParticleGeneric.cpp">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Core\MeshShapes.cpp">
+      <Filter>Source\Shared Code\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceWindows\WinMainWx.cpp">
+      <Filter>Source - Platform\Source - Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceAndroid\main.cpp">
+      <Filter>Source - Platform\Source - Android</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceEmscripten\emMain.cpp">
+      <Filter>Source - Platform\Source - Emscripten</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceEmscripten\esUtil.c">
+      <Filter>Source - Platform\Source - Emscripten</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceWP8\CubeRenderer.cpp">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceWP8\Direct3DBase.cpp">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceWP8\WP8Main.cpp">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SourceWindows\WinMain.h">
+      <Filter>Source - Platform\Source - Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Screens\Screen_Achievements.h">
+      <Filter>Source\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Screens\Screen_HowToPlay.h">
+      <Filter>Source\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Screens\Screen_LevelSelect.h">
+      <Filter>Source\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Screens\Screen_Pause.h">
+      <Filter>Source\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Screens\Screen_Stats.h">
+      <Filter>Source\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\Achievements.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\GameAudio.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\InputFinger.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\ProfileManager.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\ResourceManager.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\Stats.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\GameCommonHeader.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceIOS\AppDelegate.h">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceIOS\main.h">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceIOS\ViewController.h">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceBlackBerry\src\bbutil.h">
+      <Filter>Source - Platform\Source - BlackBerry\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Core\RenderTextQuick.h">
+      <Filter>Source\Shared Code\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuButton.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuCheckBox.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuDraggableButton.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuInputBox.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuItem.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuSlider.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuSprite.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuText.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Screens\Screen_Base.h">
+      <Filter>Source\Shared Code\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Screens\ScreenManager.h">
+      <Filter>Source\Shared Code\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Effects\Effect_Base.h">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Effects\Effect_ParticleBurst.h">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Effects\Effect_ParticleRisingGlow.h">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Effects\Effect_SunRay.h">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\ScreenOverlays.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Screens\Screen_Loading.h">
+      <Filter>Source\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\GameEmptyReplaceMe.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\GameTypes\GameType_EmptyReplaceMe.h">
+      <Filter>Source\GameTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\GameTypes\GameType_Selector.h">
+      <Filter>Source\GameTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\BitsAndPieces\ScoreChunk.h">
+      <Filter>Source\Shared Code\BitsAndPieces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\LanguageTable.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Camera\Camera2D.h">
+      <Filter>Source\Shared Code\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Camera\Camera3D.h">
+      <Filter>Source\Shared Code\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCommon\Core\LeaderboardsConfig.h">
+      <Filter>Source\Core Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Core\Game_GameServiceManager.h">
+      <Filter>Source\Shared Code\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Leaderboards\LeaderboardStorage.h">
+      <Filter>Source\Shared Code\Leaderboards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Leaderboards\Screen_Leaderboards.h">
+      <Filter>Source\Shared Code\Leaderboards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuScrollBox.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Menus\MenuScrollingText.h">
+      <Filter>Source\Shared Code\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Effects\Effect_ParticleFollowPath.h">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Effects\Effect_ParticleGeneric.h">
+      <Filter>Source\Shared Code\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Core\MeshShapes.h">
+      <Filter>Source\Shared Code\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceWindows\WinMainWx.h">
+      <Filter>Source - Platform\Source - Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceAndroid\main.h">
+      <Filter>Source - Platform\Source - Android</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceEmscripten\esUtil.h">
+      <Filter>Source - Platform\Source - Emscripten</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceWP8\BasicTimer.h">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceWP8\CubeRenderer.h">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceWP8\Direct3DBase.h">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceWP8\DirectXHelper.h">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceWP8\WP8Main.h">
+      <Filter>Source - Platform\Source - WP8</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SourceNaCL\Web\myframework.js">
+      <Filter>Source - Platform\Source - NaCL\Web Files</Filter>
+    </None>
+    <None Include="SourceNaCL\Web\myframework.nmf">
+      <Filter>Source - Platform\Source - NaCL\Web Files</Filter>
+    </None>
+    <None Include="SourceNaCL\Web\myframework_dbg.nmf">
+      <Filter>Source - Platform\Source - NaCL\Web Files</Filter>
+    </None>
+    <None Include="SourceAndroid\AndroidApk\AndroidManifest.xml">
+      <Filter>Source - Platform\Source - Android\APK files</Filter>
+    </None>
+    <None Include="SourceAndroid\AndroidApk\build.xml">
+      <Filter>Source - Platform\Source - Android\APK files</Filter>
+    </None>
+    <None Include="SourceAndroid\AndroidApk\project.properties">
+      <Filter>Source - Platform\Source - Android\APK files</Filter>
+    </None>
+    <None Include="SourceAndroid\AndroidApk\local.properties">
+      <Filter>Source - Platform\Source - Android\APK files</Filter>
+    </None>
+    <None Include="SourceAndroid\AndroidApk\res\values\strings.xml">
+      <Filter>Source - Platform\Source - Android\APK files</Filter>
+    </None>
+    <None Include="SourceAndroid\AndroidApk\res\layout\main.xml">
+      <Filter>Source - Platform\Source - Android\APK files</Filter>
+    </None>
+    <None Include="SourceNaCL\Web\game.html">
+      <Filter>Source - Platform\Source - NaCL\Web Files</Filter>
+    </None>
+    <None Include="Data\Shaders\Shader_Font.glsl">
+      <Filter>Data\Shaders</Filter>
+    </None>
+    <None Include="Data\Shaders\Shader_Simple.glsl">
+      <Filter>Data\Shaders</Filter>
+    </None>
+    <None Include="Data\Shaders\Shader_Texture.glsl">
+      <Filter>Data\Shaders</Filter>
+    </None>
+    <None Include="SourceIOS\en.lproj\InfoPlist.strings">
+      <Filter>Source - Platform\Source - IOS\en.lproj</Filter>
+    </None>
+    <None Include="SourceIOS\en.lproj\ViewController_iPad.xib">
+      <Filter>Source - Platform\Source - IOS\en.lproj</Filter>
+    </None>
+    <None Include="SourceIOS\en.lproj\ViewController_iPhone.xib">
+      <Filter>Source - Platform\Source - IOS\en.lproj</Filter>
+    </None>
+    <None Include="SourceIOS\AppDelegate.mm">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </None>
+    <None Include="SourceIOS\EmptyReplaceMe-Info.plist">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </None>
+    <None Include="SourceIOS\EmptyReplaceMe-Prefix.pch">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </None>
+    <None Include="SourceIOS\main.mm">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </None>
+    <None Include="SourceIOS\ViewController.mm">
+      <Filter>Source - Platform\Source - IOS</Filter>
+    </None>
+    <None Include="SourceBlackBerry\.cproject">
+      <Filter>Source - Platform\Source - BlackBerry</Filter>
+    </None>
+    <None Include="SourceBlackBerry\.project">
+      <Filter>Source - Platform\Source - BlackBerry</Filter>
+    </None>
+    <None Include="SourceBlackBerry\bar-descriptor.xml">
+      <Filter>Source - Platform\Source - BlackBerry</Filter>
+    </None>
+    <None Include="Data\Layouts\allscreens.layout">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="Data\Shaders\Shader_PointSprite.glsl">
+      <Filter>Data\Shaders</Filter>
+    </None>
+    <None Include="Data\Shaders\Shader_TextureVertexColor.glsl">
+      <Filter>Data\Shaders</Filter>
+    </None>
+    <None Include="Data\Shaders\Shader_TextureVertexColorAdd.glsl">
+      <Filter>Data\Shaders</Filter>
+    </None>
+    <None Include="SourceAndroid\AndroidApk\src\com\flathead\EmptyReplaceMePackage\EmptyReplaceMeActivity.java">
+      <Filter>Source - Platform\Source - Android\Java</Filter>
+    </None>
+    <None Include="SourceEmscripten\httpd_Debug.py">
+      <Filter>Source - Platform\Source - Emscripten</Filter>
+    </None>
+    <None Include="SourceEmscripten\httpd_Release.py">
+      <Filter>Source - Platform\Source - Emscripten</Filter>
+    </None>
+  </ItemGroup>
+</Project>
