@@ -1,18 +1,10 @@
 //
-// Copyright (c) 2012-2014 Jimmy Lord http://www.flatheadgames.com
+// Copyright (c) 2012-2015 Jimmy Lord http://www.flatheadgames.com
 //
-// This software is provided 'as-is', without any express or implied
-// warranty.  In no event will the authors be held liable for any damages
-// arising from the use of this software.
-// Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it
-// freely, subject to the following restrictions:
-// 1. The origin of this software must not be misrepresented; you must not
-// claim that you wrote the original software. If you use this software
-// in a product, an acknowledgment in the product documentation would be
-// appreciated but is not required.
-// 2. Altered source versions must be plainly marked as such, and must not be
-// misrepresented as being the original software.
+// This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software.
+// Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
+// 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
+// 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
 #include "GameCommonHeader.h"
@@ -49,6 +41,12 @@ GameEmptyReplaceMe::GameEmptyReplaceMe()
     m_ScreenToShow = ScreenOverlay_DontChange;
 
     m_TimeBeforeWeStartAdView = 0;
+
+    m_pShaderFile_Simple = 0;
+    m_pShaderFile_Font = 0;
+    m_pShaderFile_Texture = 0;
+    m_pShaderFile_TextureVertexColor = 0;
+    m_pShaderFile_PointSprite = 0;
 
     m_pShader_Simple = 0;
     m_pShader_Font = 0;
@@ -105,11 +103,17 @@ GameEmptyReplaceMe::~GameEmptyReplaceMe()
 {
     SAFE_DELETE( m_pScreenOverlay );
 
-    SAFE_DELETE( m_pShader_Simple );
-    SAFE_DELETE( m_pShader_Font );
-    SAFE_DELETE( m_pShader_Texture );
-    SAFE_DELETE( m_pShader_TextureVertexColor );
-    SAFE_DELETE( m_pShader_PointSprite );
+    SAFE_RELEASE( m_pShaderFile_Simple );
+    SAFE_RELEASE( m_pShaderFile_Font );
+    SAFE_RELEASE( m_pShaderFile_Texture );
+    SAFE_RELEASE( m_pShaderFile_TextureVertexColor );
+    SAFE_RELEASE( m_pShaderFile_PointSprite );
+
+    SAFE_RELEASE( m_pShader_Simple );
+    SAFE_RELEASE( m_pShader_Font );
+    SAFE_RELEASE( m_pShader_Texture );
+    SAFE_RELEASE( m_pShader_TextureVertexColor );
+    SAFE_RELEASE( m_pShader_PointSprite );
 
     SAFE_DELETE( m_pParticleRenderer );
 
@@ -171,17 +175,17 @@ void GameEmptyReplaceMe::OneTimeInit()
 
     g_pTextureManager->SetMaxTexturesToLoadInOneTick( 1 );
 
-    m_pShader_Simple = MyNew ShaderGroup( MyNew Shader_Base(ShaderPass_Main), 0, 0 );
-    m_pShader_Font = MyNew ShaderGroup( MyNew Shader_Base(ShaderPass_Main), 0, 0 );
-    m_pShader_Texture = MyNew ShaderGroup( MyNew Shader_Base(ShaderPass_Main), 0, 0 );
-    m_pShader_TextureVertexColor = MyNew ShaderGroup( MyNew Shader_Base(ShaderPass_Main), 0, 0 );
-    m_pShader_PointSprite = MyNew ShaderGroup( MyNew Shader_Base(ShaderPass_Main), 0, 0 );
+    m_pShaderFile_Simple =             RequestFile( "Data/Shaders/Shader_Simple.glsl" );
+    m_pShaderFile_Font =               RequestFile( "Data/Shaders/Shader_Font.glsl" );
+    m_pShaderFile_Texture =            RequestFile( "Data/Shaders/Shader_Texture.glsl" );
+    m_pShaderFile_TextureVertexColor = RequestFile( "Data/Shaders/Shader_TextureVertexColor.glsl" );
+    m_pShaderFile_PointSprite =        RequestFile( "Data/Shaders/Shader_PointSprite.glsl" );
 
-    m_pShader_Simple->SetFileForAllPasses( "Data/Shaders/Shader_Simple" );
-    m_pShader_Font->SetFileForAllPasses( "Data/Shaders/Shader_Font" );
-    m_pShader_Texture->SetFileForAllPasses( "Data/Shaders/Shader_Texture" );
-    m_pShader_TextureVertexColor->SetFileForAllPasses( "Data/Shaders/Shader_TextureVertexColor" );
-    m_pShader_PointSprite->SetFileForAllPasses( "Data/Shaders/Shader_PointSprite" );
+    m_pShader_Simple =             MyNew ShaderGroup( m_pShaderFile_Simple, 0 );
+    m_pShader_Font =               MyNew ShaderGroup( m_pShaderFile_Font, 0 );
+    m_pShader_Texture =            MyNew ShaderGroup( m_pShaderFile_Texture, 0 );
+    m_pShader_TextureVertexColor = MyNew ShaderGroup( m_pShaderFile_TextureVertexColor, 0 );
+    m_pShader_PointSprite =        MyNew ShaderGroup( m_pShaderFile_PointSprite, 0 );
 
     m_pParticleRenderer = MyNew ParticleRenderer();
     if( m_pParticleRenderer )
@@ -365,11 +369,11 @@ void GameEmptyReplaceMe::OnSurfaceChanged(unsigned int startx, unsigned int star
     //m_ViewMatrix.TranslatePostRotation( transx, transy, transz );
     ////m_ViewMatrix.TranslatePostRotation( (ortholeft - orthoright)/2.0f, (orthobottom - orthotop)/2.0f, -2 );
 
-    m_OrthoMatrix.SetOrtho( ortholeft, orthoright, orthobottom, orthotop, 1, -1 ); // 0, 0 is bottom left.
+    m_OrthoMatrix.CreateOrtho( ortholeft, orthoright, orthobottom, orthotop, 1, -1 ); // 0, 0 is bottom left.
 
     float scrw = g_pGame->m_GameWidth;
     float scrh = g_pGame->m_GameHeight;
-    m_OrthoMatrixGameSize.SetOrtho( ortholeft*scrw, orthoright*scrw, orthobottom*scrh, orthotop*scrh, 1, -1 ); // 0, 0 is bottom left.
+    m_OrthoMatrixGameSize.CreateOrtho( ortholeft*scrw, orthoright*scrw, orthobottom*scrh, orthotop*scrh, 1, -1 ); // 0, 0 is bottom left.
 
     m_OrthoLeft = ortholeft*scrw;
     m_OrthoRight = orthoright*scrw;
@@ -387,7 +391,7 @@ void GameEmptyReplaceMe::OnSurfaceChanged(unsigned int startx, unsigned int star
         g_pScreenManager->OnResized();
 }
 
-void GameEmptyReplaceMe::Tick(double TimePassed)
+double GameEmptyReplaceMe::Tick(double TimePassed)
 {
     //LOGInfo( LOGTag, "GameEmptyReplaceMe::Tick()\n" );
     
@@ -496,6 +500,8 @@ void GameEmptyReplaceMe::Tick(double TimePassed)
     m_pLeaderboardStorage->Tick( TimePassed );
 
     //LOGInfo( LOGTag, "~GameEmptyReplaceMe::Tick()\n" );
+
+    return 0;
 }
 
 void GameEmptyReplaceMe::OnDrawFrame()
@@ -529,9 +535,7 @@ void GameEmptyReplaceMe::OnDrawFrame()
     }
 
     // Calculate the view proj matrix
-    m_ViewProjMatrix = m_ViewMatrix;
-    m_ViewProjMatrix.Multiply( &m_ProjMatrix );
-    //esMatrixMultiply( &mViewProjMatrix, &mViewMatrix, &mProjMatrix );
+    m_ViewProjMatrix = m_ProjMatrix * m_ViewMatrix;
 
     g_pScreenManager->Draw();
 

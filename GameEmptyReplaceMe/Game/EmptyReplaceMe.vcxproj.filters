@@ -132,9 +132,6 @@
     <ClCompile Include="SourceCommon\GameCommonHeader.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="SourceBlackBerry\src\bbutil.cpp">
-      <Filter>Source - Platform\Source - BlackBerry\src</Filter>
-    </ClCompile>
     <ClCompile Include="SourceBlackBerry\src\main.cpp">
       <Filter>Source - Platform\Source - BlackBerry\src</Filter>
     </ClCompile>
@@ -299,17 +296,8 @@
     <ClInclude Include="SourceCommon\GameCommonHeader.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="SourceIOS\AppDelegate.h">
-      <Filter>Source - Platform\Source - IOS</Filter>
-    </ClInclude>
     <ClInclude Include="SourceIOS\main.h">
       <Filter>Source - Platform\Source - IOS</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceIOS\ViewController.h">
-      <Filter>Source - Platform\Source - IOS</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceBlackBerry\src\bbutil.h">
-      <Filter>Source - Platform\Source - BlackBerry\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SharedGameCode\Core\RenderTextQuick.h">
       <Filter>Source\Shared Code\Core</Filter>
@@ -484,9 +472,6 @@
     <None Include="SourceIOS\en.lproj\ViewController_iPhone.xib">
       <Filter>Source - Platform\Source - IOS\en.lproj</Filter>
     </None>
-    <None Include="SourceIOS\AppDelegate.mm">
-      <Filter>Source - Platform\Source - IOS</Filter>
-    </None>
     <None Include="SourceIOS\EmptyReplaceMe-Info.plist">
       <Filter>Source - Platform\Source - IOS</Filter>
     </None>
@@ -494,9 +479,6 @@
       <Filter>Source - Platform\Source - IOS</Filter>
     </None>
     <None Include="SourceIOS\main.mm">
-      <Filter>Source - Platform\Source - IOS</Filter>
-    </None>
-    <None Include="SourceIOS\ViewController.mm">
       <Filter>Source - Platform\Source - IOS</Filter>
     </None>
     <None Include="SourceBlackBerry\.cproject">
