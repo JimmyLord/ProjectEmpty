@@ -181,11 +181,11 @@ void GameEmptyReplaceMe::OneTimeInit()
     m_pShaderFile_TextureVertexColor = RequestFile( "Data/Shaders/Shader_TextureVertexColor.glsl" );
     m_pShaderFile_PointSprite =        RequestFile( "Data/Shaders/Shader_PointSprite.glsl" );
 
-    m_pShader_Simple =             MyNew ShaderGroup( m_pShaderFile_Simple, 0 );
-    m_pShader_Font =               MyNew ShaderGroup( m_pShaderFile_Font, 0 );
-    m_pShader_Texture =            MyNew ShaderGroup( m_pShaderFile_Texture, 0 );
-    m_pShader_TextureVertexColor = MyNew ShaderGroup( m_pShaderFile_TextureVertexColor, 0 );
-    m_pShader_PointSprite =        MyNew ShaderGroup( m_pShaderFile_PointSprite, 0 );
+    m_pShader_Simple =             MyNew ShaderGroup( m_pShaderFile_Simple, "Simple" );
+    m_pShader_Font =               MyNew ShaderGroup( m_pShaderFile_Font, "Font" );
+    m_pShader_Texture =            MyNew ShaderGroup( m_pShaderFile_Texture, "Texture" );
+    m_pShader_TextureVertexColor = MyNew ShaderGroup( m_pShaderFile_TextureVertexColor, "TextureVertexColor" );
+    m_pShader_PointSprite =        MyNew ShaderGroup( m_pShaderFile_PointSprite, "PointSprite" );
 
     m_pParticleRenderer = MyNew ParticleRenderer();
     if( m_pParticleRenderer )

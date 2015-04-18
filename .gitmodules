@@ -4,3 +4,6 @@
 [submodule "SharedGameCode"]
 	path = SharedGameCode
 	url = https://github.com/JimmyLord/SharedGameCode.git
+[submodule "wxWidgets"]
+	path = wxWidgets
+	url = https://github.com/wxWidgets/wxWidgets.git
