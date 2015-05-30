@@ -128,7 +128,7 @@ GameEmptyReplaceMe::~GameEmptyReplaceMe()
     SAFE_DELETE( m_pProfileManager );
     SAFE_DELETE( m_pSaveGameFile );
     //TODO: prevent shutdown while saving.
-    assert( m_pCurrentStringBeingSaved == 0 ); // if it's not then there's probably a save in progress.
+    MyAssert( m_pCurrentStringBeingSaved == 0 ); // if it's not then there's probably a save in progress.
     SAFE_DELETE( m_pCurrentStringBeingSaved );
 
     SAFE_DELETE( m_pAchievementChunk );
@@ -181,11 +181,11 @@ void GameEmptyReplaceMe::OneTimeInit()
     m_pShaderFile_TextureVertexColor = RequestFile( "Data/Shaders/Shader_TextureVertexColor.glsl" );
     m_pShaderFile_PointSprite =        RequestFile( "Data/Shaders/Shader_PointSprite.glsl" );
 
-    m_pShader_Simple =             MyNew ShaderGroup( m_pShaderFile_Simple, "Simple" );
-    m_pShader_Font =               MyNew ShaderGroup( m_pShaderFile_Font, "Font" );
-    m_pShader_Texture =            MyNew ShaderGroup( m_pShaderFile_Texture, "Texture" );
-    m_pShader_TextureVertexColor = MyNew ShaderGroup( m_pShaderFile_TextureVertexColor, "TextureVertexColor" );
-    m_pShader_PointSprite =        MyNew ShaderGroup( m_pShaderFile_PointSprite, "PointSprite" );
+    m_pShader_Simple =             MyNew ShaderGroup( m_pShaderFile_Simple );
+    m_pShader_Font =               MyNew ShaderGroup( m_pShaderFile_Font );
+    m_pShader_Texture =            MyNew ShaderGroup( m_pShaderFile_Texture );
+    m_pShader_TextureVertexColor = MyNew ShaderGroup( m_pShaderFile_TextureVertexColor );
+    m_pShader_PointSprite =        MyNew ShaderGroup( m_pShaderFile_PointSprite );
 
     m_pParticleRenderer = MyNew ParticleRenderer();
     if( m_pParticleRenderer )
@@ -440,7 +440,7 @@ double GameEmptyReplaceMe::Tick(double TimePassed)
             }
             else if( m_pSaveGameFile->m_SaveFileOp == SFO_Write )
             {
-                assert( m_pCurrentStringBeingSaved );
+                MyAssert( m_pCurrentStringBeingSaved );
                 SAFE_DELETE_ARRAY( m_pCurrentStringBeingSaved )
 
                 LOGInfo( LOGTag, "m_pSaveGameFile write complete.\n" );
@@ -600,7 +600,7 @@ void GameEmptyReplaceMe::SwitchGameType(GameType newtype)
         g_pScreenManager->PushScreen( m_pCurrentGame );
     }
 
-    assert( m_pCurrentGame );
+    MyAssert( m_pCurrentGame );
 
     if( initialized == false )
         m_pCurrentGame->Init();

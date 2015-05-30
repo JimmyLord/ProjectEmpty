@@ -100,13 +100,13 @@ void ResourceManager::LoadAllTextures()
 
     for( int i=0; i<SL_NumSpritesLabels; i++ )
     {
-        assert( m_pSpriteTextures[i] == 0 );
-        assert( m_pSprites[i] == 0 );
+        MyAssert( m_pSpriteTextures[i] == 0 );
+        MyAssert( m_pSprites[i] == 0 );
     }
 
     for( int i=0; i<TL_NumTextureLabels; i++ )
     {
-        assert( m_pTextures[i] == 0 );
+        MyAssert( m_pTextures[i] == 0 );
     }
 
     m_pEffect_ParticleRisingGlow = MyNew Effect_ParticleRisingGlow( g_pGame->m_pParticleRenderer );
@@ -137,7 +137,8 @@ void ResourceManager::LoadAllTextures()
         else
             m_pSprites[i] = MyNew MySprite_XYZVertexColor();
 
-        m_pSprites[i]->SetShaderAndTexture( g_pGame->m_pShader_Font, m_pSpriteTextures[i] );
+        m_pSprites[i]->GetMaterial()->SetShader( g_pGame->m_pShader_Font );
+        m_pSprites[i]->GetMaterial()->SetTextureColor( m_pSpriteTextures[i] );
 
         m_pSprites[i]->Create( g_SpriteResourceDefs[i].x, g_SpriteResourceDefs[i].y,
                                g_SpriteResourceDefs[i].su, g_SpriteResourceDefs[i].eu,
@@ -228,9 +229,8 @@ void ResourceManager::Tick(double TimePassed)
 
                     for( int s=0; s<m_pSpriteSheets[i]->m_NumSprites; s++ )
                     {
-                        m_pSpriteSheets[i]->m_pSprites[s]->SetShaderAndTexture(
-                            g_pGame->m_pShader_TextureVertexColor,
-                            m_pSpriteSheets[i]->m_pTextureDef );
+                        m_pSpriteSheets[i]->m_pSprites[s]->GetMaterial()->SetShader( g_pGame->m_pShader_TextureVertexColor );
+                        m_pSpriteSheets[i]->m_pSprites[s]->GetMaterial()->SetTextureColor( m_pSpriteSheets[i]->m_pTextureDef );
                     }
                 }
             }

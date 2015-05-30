@@ -90,7 +90,7 @@ void ScreenOverlayManager::Tick()
         else
         {
             cJSON* layouts = cJSON_Parse( m_pLayoutsFile->m_pBuffer );
-            assert( layouts );
+            MyAssert( layouts );
 
             if( layouts )
             {
@@ -184,7 +184,7 @@ Screen_Base* ScreenOverlayManager::CreateScreen(ScreenOverlays screentomake, Scr
     case ScreenOverlay_DontChange:
     case ScreenOverlay_Destroy:
     case ScreenOverlay_RemoveDontDestroy:
-        assert( false );
+        MyAssert( false );
         break;
 
     case ScreenOverlay_GameType_Selector:

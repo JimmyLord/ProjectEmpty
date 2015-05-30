@@ -83,7 +83,7 @@ void GameAudio::Play(GameAudioCues type)
         break;
     };
 
-    assert( basesampleindex + r < GameAudio_NumSamples );
+    MyAssert( basesampleindex + r < GameAudio_NumSamples );
     if( basesampleindex + r < GameAudio_NumSamples )
         g_pGame->m_pSoundPlayer->PlaySound( m_AudioIds[basesampleindex + r] );
 }
