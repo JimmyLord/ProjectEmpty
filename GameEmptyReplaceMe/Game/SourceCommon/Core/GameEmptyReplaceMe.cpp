@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2012-2015 Jimmy Lord http://www.flatheadgames.com
+// Copyright (c) 2012-2016 Jimmy Lord http://www.flatheadgames.com
 //
 // This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software.
 // Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
@@ -15,8 +15,8 @@
 #include "../GameTypes/GameType_Selector.h"
 #include "../GameTypes/GameType_EmptyReplaceMe.h"
 #include "Screens/Screen_Loading.h"
-#include "../../SharedGameCode/Core/Game_GameServiceManager.h"
-#include "../../SharedGameCode/Leaderboards/LeaderboardStorage.h"
+#include "../../../SharedGameCode/Core/Game_GameServiceManager.h"
+#include "../../../SharedGameCode/Leaderboards/LeaderboardStorage.h"
 
 #include "ProfileManager.h"
 
@@ -187,7 +187,7 @@ void GameEmptyReplaceMe::OneTimeInit()
     m_pShader_TextureVertexColor = MyNew ShaderGroup( m_pShaderFile_TextureVertexColor );
     m_pShader_PointSprite =        MyNew ShaderGroup( m_pShaderFile_PointSprite );
 
-    m_pParticleRenderer = MyNew ParticleRenderer();
+    m_pParticleRenderer = MyNew ParticleRenderer( false );
     if( m_pParticleRenderer )
     {
         m_pParticleRenderer->m_ScalePosToScreenSize = false;
@@ -204,7 +204,7 @@ void GameEmptyReplaceMe::OneTimeInit()
     //m_pGameAudio->LoadAllGameAudio();
 
     if( m_pSystemFont == 0 )
-        m_pSystemFont = g_FontManager.CreateFont( "Data/Fonts/System24.fnt" );
+        m_pSystemFont = g_pFontManager->CreateFont( "Data/Fonts/System24.fnt" );
 
     //m_pHighScoreStorage = MyNew HighScoreStorage();
     //m_pHighScoreStorage->Init();
@@ -504,12 +504,12 @@ double GameEmptyReplaceMe::Tick(double TimePassed)
     return 0;
 }
 
-void GameEmptyReplaceMe::OnDrawFrame()
+void GameEmptyReplaceMe::OnDrawFrame(unsigned int canvasid)
 {
     if( IsReadyToRender() == false )
         return;
 
-    GameCore::OnDrawFrame();
+    GameCore::OnDrawFrame( canvasid );
 
     // clear the viewport to dark gray.
     //glClearColor( 0.1f, 0.1f, 0.8f, 1.0f );
@@ -524,7 +524,7 @@ void GameEmptyReplaceMe::OnDrawFrame()
     {
         FontDefinition* pFont = g_pGame->m_pSystemFont;
 
-        if( pFont && pFont->m_pFont && pFont->m_pTextureDef && pFont->m_pTextureDef->m_TextureID )
+        if( pFont && pFont->m_pBMFont && pFont->m_pTextureDef && pFont->m_pTextureDef->m_TextureID )
         {
             int scrw = (int)g_pGame->m_GameWidth;
             int scrh = (int)g_pGame->m_GameHeight;
@@ -554,10 +554,10 @@ void GameEmptyReplaceMe::OnDrawFrame()
     RenderTextQuick( pFont, 40, g_pGame->m_OrthoRight, g_pGame->m_OrthoTop, Justify_Top|Justify_Right, "%d", m_DebugFPS );
 }
 
-void GameEmptyReplaceMe::OnTouch(int action, int id, float x, float y, float pressure, float size)
+bool GameEmptyReplaceMe::OnTouch(int action, int id, float x, float y, float pressure, float size)
 {
     if( id >= MAX_FINGERS )
-        return;
+        return false;
 
     x = (x - m_ScreenOffsetX - m_WindowStartX) / m_ScreenWidth * m_GameWidth;
     y = (y - m_ScreenOffsetY - m_WindowStartY) / m_ScreenHeight * m_GameHeight;
@@ -565,21 +565,21 @@ void GameEmptyReplaceMe::OnTouch(int action, int id, float x, float y, float pre
     GameCore::OnTouch( action, id, x, y, pressure, size );
     //LOGInfo( LOGTag, "OnTouch (%d %d)(%f,%f)(%f %f)\n", action, id, x, y, pressure, size);
 
-    g_pScreenManager->OnTouch( action, id, x, y, pressure, size );
+    return g_pScreenManager->OnTouch( action, id, x, y, pressure, size );
 }
 
-void GameEmptyReplaceMe::OnButtons(GameCoreButtonActions action, GameCoreButtonIDs id)
+bool GameEmptyReplaceMe::OnButtons(GameCoreButtonActions action, GameCoreButtonIDs id)
 {
     GameCore::OnButtons( action, id );
 
-    g_pScreenManager->OnButtons( action, id );
+    return g_pScreenManager->OnButtons( action, id );
 }
 
-void GameEmptyReplaceMe::OnKeyDown(int keycode, int unicodechar)
+bool GameEmptyReplaceMe::OnKeys(GameCoreButtonActions action, int keycode, int unicodechar)
 {
-    GameCore::OnKeyDown( keycode, unicodechar );
+    GameCore::OnKeys( action, keycode, unicodechar );
 
-    g_pScreenManager->OnKeyDown( keycode, unicodechar );
+    return g_pScreenManager->OnKeys( action, keycode, unicodechar );
 }
 
 void GameEmptyReplaceMe::SwitchGameType(GameType newtype)

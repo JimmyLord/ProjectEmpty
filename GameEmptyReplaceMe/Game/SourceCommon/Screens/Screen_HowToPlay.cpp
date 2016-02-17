@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2012-2014 Jimmy Lord http://www.flatheadgames.com
+// Copyright (c) 2012-2016 Jimmy Lord http://www.flatheadgames.com
 //
 // This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software.
 // Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
@@ -40,10 +40,16 @@ void Screen_HowToPlay::Init()
         MenuButton* pButton = GetMenuButton(i);
 
         MySprite* pWhiteSquare = g_pGame->m_pResources->m_pSprites[SL_WhiteSquare];
-        pButton->SetSprites( pWhiteSquare, pWhiteSquare, pWhiteSquare, 0, pWhiteSquare );
+        MaterialDefinition* pMatGray = g_pMaterialManager->LoadMaterial( "Data/Materials/Gray.mymaterial" );
+        pButton->SetMaterial( MenuButton::Material_BG, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGDisabled, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGOverlay, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGPressed, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_Shadow, pMatGray );
+        pMatGray->Release();
 
         //pButton->m_pFont = g_pGame->m_pSystemFont;
-        pButton->m_Style = MBTS_SingleLine;
+        //pButton->m_Style = MBTS_SingleLine;
         pButton->m_FontHeight = fontheight;
         pButton->SetTextShadow( 3.0f, -3.0f );
 
@@ -86,20 +92,20 @@ void Screen_HowToPlay::Init()
         }
 
         // special case to center the 4th and 5th buttons:
-        GetMenuButton(3)->m_Transform.m41 = firstbuttonx + width - width/2;
-        GetMenuButton(4)->m_Transform.m41 = firstbuttonx + width + width/2;
+        GetMenuButton(3)->m_Position.x = firstbuttonx + width - width/2;
+        GetMenuButton(4)->m_Position.x = firstbuttonx + width + width/2;
 
-        sprintf_s( GetMenuButton(0)->m_Strings[0], MAX_MENUBUTTON_STRING, "Online" );
-        sprintf_s( GetMenuButton(1)->m_Strings[0], MAX_MENUBUTTON_STRING, "Infinite" );
-        sprintf_s( GetMenuButton(2)->m_Strings[0], MAX_MENUBUTTON_STRING, "Puzzle" );
-        sprintf_s( GetMenuButton(3)->m_Strings[0], MAX_MENUBUTTON_STRING, "Login" );
-        sprintf_s( GetMenuButton(4)->m_Strings[0], MAX_MENUBUTTON_STRING, "Scoring" );
+        sprintf_s( GetMenuButton(0)->m_Strings[0], MenuButton::MAX_STRING_LENGTH, "Online" );
+        sprintf_s( GetMenuButton(1)->m_Strings[0], MenuButton::MAX_STRING_LENGTH, "Infinite" );
+        sprintf_s( GetMenuButton(2)->m_Strings[0], MenuButton::MAX_STRING_LENGTH, "Puzzle" );
+        sprintf_s( GetMenuButton(3)->m_Strings[0], MenuButton::MAX_STRING_LENGTH, "Login" );
+        sprintf_s( GetMenuButton(4)->m_Strings[0], MenuButton::MAX_STRING_LENGTH, "Scoring" );
 
-        GetMenuButton(0)->m_ButtonAction = (int)HTPA_SwitchPage_Online;
-        GetMenuButton(1)->m_ButtonAction = (int)HTPA_SwitchPage_Infinite;
-        GetMenuButton(2)->m_ButtonAction = (int)HTPA_SwitchPage_Puzzle;
-        GetMenuButton(3)->m_ButtonAction = (int)HTPA_SwitchPage_Login;
-        GetMenuButton(4)->m_ButtonAction = (int)HTPA_SwitchPage_Scoring;
+        GetMenuButton(0)->m_ButtonAction[0] = (int)HTPA_SwitchPage_Online;
+        GetMenuButton(1)->m_ButtonAction[0] = (int)HTPA_SwitchPage_Infinite;
+        GetMenuButton(2)->m_ButtonAction[0] = (int)HTPA_SwitchPage_Puzzle;
+        GetMenuButton(3)->m_ButtonAction[0] = (int)HTPA_SwitchPage_Login;
+        GetMenuButton(4)->m_ButtonAction[0] = (int)HTPA_SwitchPage_Scoring;
     }
 
     //// back is last button.
@@ -117,7 +123,7 @@ void Screen_HowToPlay::Tick(double TimePassed)
     if( g_pGame->m_pResources )
     {
         for( int i=0; i<m_MenuItemsNeeded; i++ )
-            GetMenuButton(i)->m_pFont = g_pGame->m_pSystemFont;
+            GetMenuButton(i)->SetFont( g_pGame->m_pSystemFont );
     }
 }
 
@@ -198,7 +204,7 @@ void Screen_HowToPlay::Draw()
     {
         if( GetMenuItem(i) )
         {
-            GetMenuItem(i)->Draw();
+            GetMenuItem(i)->Draw( &g_pGame->m_OrthoMatrix );
         }
     }
 
@@ -383,7 +389,8 @@ bool Screen_HowToPlay::OnTouch(int action, int id, float x, float y, float press
         {
             if( GetMenuItem(i) )
             {
-                int action = GetMenuItem(i)->TriggerOnCollision( id, x, y, false );
+                const char* actionstr = GetMenuItem(i)->TriggerOnCollision( id, x, y, false );
+                int action = actionstr[0];
 
                 if( action == HTPA_Back )
                 {

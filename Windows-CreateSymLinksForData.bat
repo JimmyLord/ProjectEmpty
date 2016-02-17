@@ -1,4 +1,4 @@
-@echo This batch file will link a data folder from Engine to GameEmptyReplaceMe/Game
+@echo This batch file will link the main data dir to the android build dir
 @echo --
 
 cd GameEmptyReplaceMe/Game

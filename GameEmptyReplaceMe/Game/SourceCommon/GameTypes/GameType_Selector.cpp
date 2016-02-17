@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2012-2014 Jimmy Lord http://www.flatheadgames.com
+// Copyright (c) 2012-2016 Jimmy Lord http://www.flatheadgames.com
 //
 // This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software.
 // Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
@@ -11,9 +11,9 @@
 #include "GameType_Selector.h"
 #include "../Core/ProfileManager.h"
 #include "../Core/ResourceManager.h"
-#include "../../SharedGameCode/Menus/MenuButton.h"
-#include "../../SharedGameCode/Menus/MenuSprite.h"
-#include "../../SharedGameCode/Menus/MenuText.h"
+#include "../../../SharedGameCode/Menus/MenuButton.h"
+#include "../../../SharedGameCode/Menus/MenuSprite.h"
+#include "../../../SharedGameCode/Menus/MenuText.h"
 
 void SetExitOnBackButton(bool exit)
 {
@@ -76,7 +76,7 @@ void GameType_Selector::Init()
 
         pMenuSprite = GetMenuSprite( MainMenuItems_None_BackgroundItem );
         pMenuSprite->SetPositionAndSize( scrw/2, scrh/2, devw, devh );
-        pMenuSprite->m_HasShadow = false;
+        //pMenuSprite->m_HasShadow = false;
 
         pMenuSprite = GetMenuSprite( MainMenuItems_None_MenuTitleBG );
         pMenuSprite->SetPositionAndSize( scrw/2, scrh*0.8f, devw, scrh*0.2f );
@@ -86,7 +86,7 @@ void GameType_Selector::Init()
         pMenuText->SetPositionAndSize( scrw/2, scrh*0.8f, scrw, scrh );
         pMenuText->m_FontHeight = 120;
         pMenuText->SetString( "EmptyReplaceMe" );
-        pMenuText->m_pFont = g_pGame->m_pSystemFont;
+        pMenuText->SetFont( g_pGame->m_pSystemFont );
 
         pMenuSprite = GetMenuSprite( MainMenuItems_None_FlatheadGamesBG );
         pMenuSprite->SetPositionAndSize( scrw/2, scrh*0.1f, devw, scrh*0.15f );
@@ -96,7 +96,7 @@ void GameType_Selector::Init()
         pMenuText->SetPositionAndSize( scrw/2, scrh*0.1f, devw, scrh );
         pMenuText->m_FontHeight = 60;
         pMenuText->SetString( "Flathead Games" );
-        pMenuText->m_pFont = g_pGame->m_pSystemFont;
+        pMenuText->SetFont( g_pGame->m_pSystemFont );
     }
     
     pMenuSprite = GetMenuSprite( MainMenuItems_None_BackgroundItem );
@@ -110,23 +110,23 @@ void GameType_Selector::Init()
     for( int i=MainMenuItems_None_MenuTitleBG; i<=MainMenuItems_None_MenuTitleText; i++ )
     {
         GetMenuItem(i)->m_UseTweenIn = true;
-        GetMenuItem(i)->m_TweenIn.AddFloat( &GetMenuItem(i)->m_Transform.m42, GetMenuItem(i)->m_Transform.m42 + 1000, GetMenuItem(i)->m_Transform.m42, 0.5f, MTT_SineEaseOut, i*0.1f );
+        GetMenuItem(i)->m_TweenIn.AddFloat( &GetMenuItem(i)->m_Position.y, GetMenuItem(i)->m_Position.y + 1000, GetMenuItem(i)->m_Position.y, 0.5f, MTT_SineEaseOut, i*0.1f );
 
         GetMenuItem(i)->m_UseTweenOut = true;
-        GetMenuItem(i)->m_TweenOut.AddFloat( &GetMenuItem(i)->m_Transform.m42, GetMenuItem(i)->m_Transform.m42, GetMenuItem(i)->m_Transform.m42 + 1000, 0.5f, MTT_SineEaseOut, i*0.1f );
+        GetMenuItem(i)->m_TweenOut.AddFloat( &GetMenuItem(i)->m_Position.y, GetMenuItem(i)->m_Position.y, GetMenuItem(i)->m_Position.y + 1000, 0.5f, MTT_SineEaseOut, i*0.1f );
 
-        GetMenuItem(i)->m_Transform.m42 += 1000;
+        GetMenuItem(i)->m_Position.y += 1000;
     }
 
     for( int i=MainMenuItems_None_FlatheadGamesBG; i<=MainMenuItems_None_FlatheadGamesText; i++ )
     {
         GetMenuItem(i)->m_UseTweenIn = true;
-        GetMenuItem(i)->m_TweenIn.AddFloat( &GetMenuItem(i)->m_Transform.m42, GetMenuItem(i)->m_Transform.m42 - 1000, GetMenuItem(i)->m_Transform.m42, 0.5f, MTT_SineEaseOut, i*0.1f );
+        GetMenuItem(i)->m_TweenIn.AddFloat( &GetMenuItem(i)->m_Position.y, GetMenuItem(i)->m_Position.y - 1000, GetMenuItem(i)->m_Position.y, 0.5f, MTT_SineEaseOut, i*0.1f );
 
         GetMenuItem(i)->m_UseTweenOut = true;
-        GetMenuItem(i)->m_TweenOut.AddFloat( &GetMenuItem(i)->m_Transform.m42, GetMenuItem(i)->m_Transform.m42, GetMenuItem(i)->m_Transform.m42 - 1000, 0.5f, MTT_SineEaseOut, i*0.1f );
+        GetMenuItem(i)->m_TweenOut.AddFloat( &GetMenuItem(i)->m_Position.y, GetMenuItem(i)->m_Position.y, GetMenuItem(i)->m_Position.y - 1000, 0.5f, MTT_SineEaseOut, i*0.1f );
 
-        GetMenuItem(i)->m_Transform.m42 -= 1000;
+        GetMenuItem(i)->m_Position.y -= 1000;
     }
 
     for( int i=MainMenuItems_FirstButton; i<=MainMenuItems_LastButton; i++ )
@@ -134,9 +134,15 @@ void GameType_Selector::Init()
         MenuButton* pButton = CreateMenuButton( i );
 
         MySprite* pWhiteSquare = g_pGame->m_pResources->m_pSprites[SL_WhiteSquare];
-        pButton->SetSprites( pWhiteSquare, pWhiteSquare, pWhiteSquare, 0, pWhiteSquare );
+        MaterialDefinition* pMatGray = g_pMaterialManager->LoadMaterial( "Data/Materials/Gray.mymaterial" );
+        pButton->SetMaterial( MenuButton::Material_BG, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGDisabled, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGOverlay, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGPressed, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_Shadow, pMatGray );
+        pMatGray->Release();
 
-        pButton->m_pFont = g_pGame->m_pSystemFont;
+        pButton->SetFont( g_pGame->m_pSystemFont );
         pButton->m_FontHeight = 30;
         pButton->SetTextShadow( 3.0f, -3.0f );
 
@@ -152,7 +158,7 @@ void GameType_Selector::Init()
         pButton->m_TextColor = GameMenuButtonColors[MBCT_SelectableText];
         pButton->m_BGColor = GameMenuButtonColors[MBCT_SelectableBG];
 
-        pButton->m_ButtonAction = i;
+        pButton->m_ButtonAction[0] = (char)i;
     }
 
     for( int i=MainMenuItems_FirstButton; i<=MainMenuItems_Options; i++ )
@@ -160,13 +166,13 @@ void GameType_Selector::Init()
         MenuButton* pButton = GetMenuButton(i);
 
         pButton->m_UseTweenIn = true;
-        pButton->m_TweenIn.AddFloat( &pButton->m_Transform.m41, pButton->m_Transform.m41 - 1000, pButton->m_Transform.m41, 2.5f, MTT_ElasticEaseOut, i*0.1f );
+        pButton->m_TweenIn.AddFloat( &pButton->m_Position.x, pButton->m_Position.x - 1000, pButton->m_Position.x, 2.5f, MTT_ElasticEaseOut, i*0.1f );
         //pButton->m_TweenIn.AddFloat( &pButton->m_PosY, pButton->m_PosY - 1000, pButton->m_PosY, 0.5f, MTT_SineEaseOut, i*0.1f );
 
         pButton->m_UseTweenOut = true;
-        pButton->m_TweenOut.AddFloat( &pButton->m_Transform.m41, pButton->m_Transform.m41, pButton->m_Transform.m41 - 1000, 1.5f, MTT_ElasticEaseIn, (i-MainMenuItems_FirstButton)*0.1f );
+        pButton->m_TweenOut.AddFloat( &pButton->m_Position.x, pButton->m_Position.x, pButton->m_Position.x - 1000, 1.5f, MTT_ElasticEaseIn, (i-MainMenuItems_FirstButton)*0.1f );
 
-        pButton->m_Transform.m41 -= 1000;
+        pButton->m_Position.x -= 1000;
     }
 
     GetMenuButton( MainMenuItems_MainGame )->SetString( "New Game" );
@@ -180,11 +186,11 @@ void GameType_Selector::Init()
         pButton->m_BGColor = ColorByte(255,120,120,255);
         pButton->SetPositionAndSize( scrw-50, 300, 100, 60 );
         pButton->m_UseTweenIn = true;
-        pButton->m_TweenIn.AddFloat( &pButton->m_Transform.m41, pButton->m_Transform.m41 + 1000, pButton->m_Transform.m41, 0.5f, MTT_SineEaseOut, 1.0f );
+        pButton->m_TweenIn.AddFloat( &pButton->m_Position.x, pButton->m_Position.x + 1000, pButton->m_Position.x, 0.5f, MTT_SineEaseOut, 1.0f );
         pButton->m_UseTweenOut = true;
-        pButton->m_TweenOut.AddFloat( &pButton->m_Transform.m41, pButton->m_Transform.m41, pButton->m_Transform.m41 + 1000, 1.5f, MTT_ElasticEaseIn, 0 );
+        pButton->m_TweenOut.AddFloat( &pButton->m_Position.x, pButton->m_Position.x, pButton->m_Position.x + 1000, 1.5f, MTT_ElasticEaseIn, 0 );
 
-        pButton->m_Transform.m41 += 1000;
+        pButton->m_Position.x += 1000;
     }
 
     //GetMenuButton( MainMenuItems_NewDebugGame )->SetVisibleAndEnabled( false );
@@ -217,7 +223,7 @@ void GameType_Selector::Draw()
         {
             //if( i== 4 )
             {
-                GetMenuItem(i)->Draw();
+                GetMenuItem(i)->Draw( &g_pGame->m_OrthoMatrix );
                 //return;
             }
         }

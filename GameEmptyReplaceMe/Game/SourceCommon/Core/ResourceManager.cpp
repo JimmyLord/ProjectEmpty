@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2012-2014 Jimmy Lord http://www.flatheadgames.com
+// Copyright (c) 2012-2016 Jimmy Lord http://www.flatheadgames.com
 //
 // This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software.
 // Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
@@ -133,9 +133,9 @@ void ResourceManager::LoadAllTextures()
         m_pSpriteTextures[i] = g_pTextureManager->CreateTexture( g_SpriteResourceDefs[i].m_Filename, g_SpriteResourceDefs[i].m_MinFilter, g_SpriteResourceDefs[i].m_MagFilter, g_SpriteResourceDefs[i].m_WrapS, g_SpriteResourceDefs[i].m_WrapT );
 
         if( g_SpriteResourceDefs[i].m_SpriteClass == SpriteClass_Base )
-            m_pSprites[i] = MyNew MySprite();
+            m_pSprites[i] = MyNew MySprite( true );
         else
-            m_pSprites[i] = MyNew MySprite_XYZVertexColor();
+            m_pSprites[i] = MyNew MySprite_XYZVertexColor( true );
 
         m_pSprites[i]->GetMaterial()->SetShader( g_pGame->m_pShader_Font );
         m_pSprites[i]->GetMaterial()->SetTextureColor( m_pSpriteTextures[i] );
@@ -147,7 +147,10 @@ void ResourceManager::LoadAllTextures()
     }
 
     m_pTextures[TL_Particle_Glow] = g_pTextureManager->CreateTexture( "Data/Particles/SimpleGlow64.png", GL_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE );
-    g_pGame->m_pParticleRenderer->SetShaderAndTexture( g_pGame->m_pShader_PointSprite, g_pGame->m_pResources->m_pTextures[TL_Particle_Glow] );
+    //g_pGame->m_pParticleRenderer->SetShaderAndTexture( g_pGame->m_pShader_PointSprite, g_pGame->m_pResources->m_pTextures[TL_Particle_Glow] );
+    MaterialDefinition* pMaterial = g_pMaterialManager->CreateMaterial();
+    g_pGame->m_pParticleRenderer->SetMaterial( pMaterial );
+    pMaterial->Release();
 
     //m_pSpriteSheets[SS_BlocksSolid] = MyNew SpriteSheet_XYZVertexColor;
     //m_pSpriteSheets[SS_BlocksSolid]->SetScale( 60.0f / 150.0f );
@@ -157,7 +160,7 @@ void ResourceManager::LoadAllTextures()
     //m_pSpriteSheets[SS_BlocksAlpha]->SetScale( 60.0f / 150.0f );
     //m_pSpriteSheets[SS_BlocksAlpha]->Load( "Data/Blocks/BlocksAlpha" );
 
-    m_pFontText = g_FontManager.CreateFont( "Data/Fonts/System24.fnt" ); //Nevis60.fnt" );
+    m_pFontText = g_pFontManager->CreateFont( "Data/Fonts/System24.fnt" ); //Nevis60.fnt" );
 
     checkGlError("end LoadAllTextures");
 }
@@ -230,7 +233,7 @@ void ResourceManager::Tick(double TimePassed)
                     for( int s=0; s<m_pSpriteSheets[i]->m_NumSprites; s++ )
                     {
                         m_pSpriteSheets[i]->m_pSprites[s]->GetMaterial()->SetShader( g_pGame->m_pShader_TextureVertexColor );
-                        m_pSpriteSheets[i]->m_pSprites[s]->GetMaterial()->SetTextureColor( m_pSpriteSheets[i]->m_pTextureDef );
+                        m_pSpriteSheets[i]->m_pSprites[s]->GetMaterial()->SetTextureColor( m_pSpriteSheets[i]->m_pMaterial->GetTextureColor() );
                     }
                 }
             }

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2012-2014 Jimmy Lord http://www.flatheadgames.com
+// Copyright (c) 2012-2016 Jimmy Lord http://www.flatheadgames.com
 //
 // This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software.
 // Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
@@ -40,12 +40,19 @@ void Screen_Pause::Init()
         MenuButton* pButton = GetMenuButton( i );
 
         MySprite* pWhiteSquare = g_pGame->m_pResources->m_pSprites[SL_WhiteSquare];
-        pButton->SetSprites( pWhiteSquare, pWhiteSquare, pWhiteSquare, 0, pWhiteSquare );
+
+        MaterialDefinition* pMatGray = g_pMaterialManager->LoadMaterial( "Data/Materials/Gray.mymaterial" );
+        pButton->SetMaterial( MenuButton::Material_BG, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGDisabled, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGOverlay, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGPressed, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_Shadow, pMatGray );
+        pMatGray->Release();
 
         float yspace = fontheight * 2 * 2;
 
         //pButton->m_pFont = g_pGame->m_pResources->m_pGBResources->m_pFontArial48;
-        pButton->m_Style = MBTS_SingleLine;
+        //pButton->m_Style = MBTS_SingleLine;
         pButton->m_FontHeight = fontheight;
         pButton->SetTextShadow( 3.0f, -3.0f );
 
@@ -67,31 +74,31 @@ void Screen_Pause::Init()
     if( 0 ) //g_pGame->m_GBGameType != GBType_Options )
     {
         GetMenuButton( i )->SetString( "Resume" );
-        GetMenuButton( i )->m_ButtonAction = (int)PMA_Resume;
+        GetMenuButton( i )->m_ButtonAction[0] = (int)PMA_Resume;
         i++;
     }
 
     GetMenuButton( i )->SetString( "Achievements" );
-    GetMenuButton( i )->m_ButtonAction = (int)PMA_Achievements;
+    GetMenuButton( i )->m_ButtonAction[0] = (int)PMA_Achievements;
     i++;
 
     GetMenuButton( i )->SetString( "Stats" );
-    GetMenuButton( i )->m_ButtonAction = (int)PMA_Stats;
+    GetMenuButton( i )->m_ButtonAction[0] = (int)PMA_Stats;
     i++;
 
     if( 0 ) //g_pGame->m_GBGameType == GBType_WordPuzzle && g_pGame->m_OnlineMode == false )
     {
         GetMenuButton( i )->SetString( "Level select" );
-        GetMenuButton( i )->m_ButtonAction = (int)PMA_LevelSelect;
+        GetMenuButton( i )->m_ButtonAction[0] = (int)PMA_LevelSelect;
         i++;
     }
 
     GetMenuButton( i )->SetString( "How to Play" );
-    GetMenuButton( i )->m_ButtonAction = (int)PMA_HowToPlay;
+    GetMenuButton( i )->m_ButtonAction[0] = (int)PMA_HowToPlay;
     i++;
 
     GetMenuButton( i )->SetString( "Back to main menu" );
-    GetMenuButton( i )->m_ButtonAction = (int)PMA_MainMenu;
+    GetMenuButton( i )->m_ButtonAction[0] = (int)PMA_MainMenu;
     i++;
 }
 
@@ -102,7 +109,7 @@ void Screen_Pause::Tick(double TimePassed)
     if( g_pGame->m_pResources )
     {
         for( int i=0; i<m_MenuItemsNeeded; i++ )
-            GetMenuButton( i )->m_pFont = g_pGame->m_pSystemFont;
+            GetMenuButton( i )->SetFont( g_pGame->m_pSystemFont );
     }
 }
 
@@ -140,7 +147,7 @@ void Screen_Pause::Draw()
     {
         if( GetMenuItem(i) )
         {
-            GetMenuItem(i)->Draw();
+            GetMenuItem(i)->Draw( &g_pGame->m_OrthoMatrix );
         }
     }
 }

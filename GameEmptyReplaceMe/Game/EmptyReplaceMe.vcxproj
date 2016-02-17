@@ -480,8 +480,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>MYFW_WINDOWS;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Box2D_v2.2.1;SourceCommon;$(SolutionDir)../wxWidgets/include/msvc;$(SolutionDir)../wxWidgets/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_WINDOWS;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon;$(SolutionDir)../Framework/Libraries/wxWidgets/include/msvc;$(SolutionDir)../Framework/Libraries/wxWidgets/include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -532,7 +532,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>MYFW_EMSCRIPTEN;_DEBUG</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -550,8 +550,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>MYFW_WINDOWS;WIN32;MYFW_USING_WX;wxMSVC_VERSION_AUTO;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Box2D_v2.2.1;SourceCommon;$(SolutionDir)../wxWidgets/include/msvc;$(SolutionDir)../wxWidgets/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_WINDOWS;WIN32;MYFW_USING_WX;wxMSVC_VERSION_AUTO;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon;$(SolutionDir)../Framework/Libraries/wxWidgets/include/msvc;$(SolutionDir)../Framework/Libraries/wxWidgets/include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -602,7 +602,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>MYFW_EMSCRIPTEN;_DEBUG</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -621,8 +621,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>MYFW_ANDROID;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_ANDROID;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -646,8 +646,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>MYFW_ANDROID;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_ANDROID;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -714,8 +714,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>MYFW_WINDOWS;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Box2D_v2.2.1;SourceCommon;$(SolutionDir)../wxWidgets/include/msvc;$(SolutionDir)../wxWidgets/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_WINDOWS;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon;$(SolutionDir)../Framework/Libraries/wxWidgets/include/msvc;$(SolutionDir)../Framework/Libraries/wxWidgets/include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -778,7 +778,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>MYFW_EMSCRIPTEN;NDEBUG</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -800,8 +800,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>MYFW_WINDOWS;WIN32;MYFW_USING_WX;wxMSVC_VERSION_AUTO;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Box2D_v2.2.1;SourceCommon;$(SolutionDir)../wxWidgets/include/msvc;$(SolutionDir)../wxWidgets/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_WINDOWS;WIN32;MYFW_USING_WX;wxMSVC_VERSION_AUTO;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon;$(SolutionDir)../Framework/Libraries/wxWidgets/include/msvc;$(SolutionDir)../Framework/Libraries/wxWidgets/include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -864,7 +864,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>MYFW_EMSCRIPTEN;NDEBUG</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>GameCommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -887,8 +887,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>MYFW_ANDROID;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_ANDROID;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -910,8 +910,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>MYFW_ANDROID;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\Framework\Box2D_v2.2.1;SourceCommon</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCHFILE="GameCommonHeader.h";MYFW_ANDROID;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Framework/Libraries/Box2D/Box2D;SourceCommon</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -977,8 +977,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SharedGameCode\BitsAndPieces\ScoreChunk.cpp" />
-    <ClCompile Include="..\..\SharedGameCode\Camera\Camera2D.cpp" />
-    <ClCompile Include="..\..\SharedGameCode\Camera\Camera3D.cpp" />
+    <ClCompile Include="..\..\SharedGameCode\Camera\SharedCamera2D.cpp" />
+    <ClCompile Include="..\..\SharedGameCode\Camera\SharedCamera3D.cpp" />
     <ClCompile Include="..\..\SharedGameCode\Core\Game_GameServiceManager.cpp" />
     <ClCompile Include="..\..\SharedGameCode\Core\MeshShapes.cpp" />
     <ClCompile Include="..\..\SharedGameCode\Core\RenderTextQuick.cpp" />
@@ -1273,8 +1273,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SharedGameCode\BitsAndPieces\ScoreChunk.h" />
-    <ClInclude Include="..\..\SharedGameCode\Camera\Camera2D.h" />
-    <ClInclude Include="..\..\SharedGameCode\Camera\Camera3D.h" />
+    <ClInclude Include="..\..\SharedGameCode\Camera\SharedCamera2D.h" />
+    <ClInclude Include="..\..\SharedGameCode\Camera\SharedCamera3D.h" />
     <ClInclude Include="..\..\SharedGameCode\Core\Game_GameServiceManager.h" />
     <ClInclude Include="..\..\SharedGameCode\Core\MeshShapes.h" />
     <ClInclude Include="..\..\SharedGameCode\Core\RenderTextQuick.h" />
@@ -1532,12 +1532,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Layouts\allscreens.layout" />
+    <None Include="Data\Materials\Gray.mymaterial" />
     <None Include="Data\Shaders\Shader_Font.glsl" />
     <None Include="Data\Shaders\Shader_PointSprite.glsl" />
     <None Include="Data\Shaders\Shader_Simple.glsl" />
     <None Include="Data\Shaders\Shader_Texture.glsl" />
     <None Include="Data\Shaders\Shader_TextureVertexColor.glsl" />
     <None Include="Data\Shaders\Shader_TextureVertexColorAdd.glsl" />
+    <None Include="Data\Shaders\Shader_TintColor.glsl" />
     <None Include="SourceAndroid\AndroidApk\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </None>

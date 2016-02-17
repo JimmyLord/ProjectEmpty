@@ -88,6 +88,9 @@
     <Filter Include="Source - Platform\Source - WP8">
       <UniqueIdentifier>{e5550a78-55dc-4dfe-be19-a1ec884306de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data\Materials">
+      <UniqueIdentifier>{65d23e30-afd2-45d1-a145-0ac34d99bd48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceWindows\WinMain.cpp">
@@ -201,12 +204,6 @@
     <ClCompile Include="..\..\SharedGameCode\Menus\LanguageTable.cpp">
       <Filter>Source\Shared Code\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SharedGameCode\Camera\Camera2D.cpp">
-      <Filter>Source\Shared Code\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SharedGameCode\Camera\Camera3D.cpp">
-      <Filter>Source\Shared Code\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="SourceCommon\Core\LeaderboardsConfig.cpp">
       <Filter>Source\Core Files</Filter>
     </ClCompile>
@@ -254,6 +251,12 @@
     </ClCompile>
     <ClCompile Include="SourceWP8\WP8Main.cpp">
       <Filter>Source - Platform\Source - WP8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Camera\SharedCamera2D.cpp">
+      <Filter>Source\Shared Code\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SharedGameCode\Camera\SharedCamera3D.cpp">
+      <Filter>Source\Shared Code\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -365,12 +368,6 @@
     <ClInclude Include="..\..\SharedGameCode\Menus\LanguageTable.h">
       <Filter>Source\Shared Code\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SharedGameCode\Camera\Camera2D.h">
-      <Filter>Source\Shared Code\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SharedGameCode\Camera\Camera3D.h">
-      <Filter>Source\Shared Code\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="SourceCommon\Core\LeaderboardsConfig.h">
       <Filter>Source\Core Files</Filter>
     </ClInclude>
@@ -421,6 +418,12 @@
     </ClInclude>
     <ClInclude Include="SourceWP8\WP8Main.h">
       <Filter>Source - Platform\Source - WP8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Camera\SharedCamera2D.h">
+      <Filter>Source\Shared Code\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SharedGameCode\Camera\SharedCamera3D.h">
+      <Filter>Source\Shared Code\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -510,6 +513,12 @@
     </None>
     <None Include="SourceEmscripten\httpd_Release.py">
       <Filter>Source - Platform\Source - Emscripten</Filter>
+    </None>
+    <None Include="Data\Materials\Gray.mymaterial">
+      <Filter>Data\Materials</Filter>
+    </None>
+    <None Include="Data\Shaders\Shader_TintColor.glsl">
+      <Filter>Data\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>
