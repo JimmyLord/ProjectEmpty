@@ -1,9 +1,9 @@
 {
 	"Material":	{
-		"Name":	"Gray",
+		"Name":	"Shadow",
 		"Shader":	"Data/Shaders/Shader_TintColor.glsl",
 		"ColorAmbient":	[1, 1, 1, 1],
-		"ColorDiffuse":	[0.749020, 0.749020, 0.749020, 1],
+		"ColorDiffuse":	[0.20, 0.2, 0.2, 1],
 		"ColorSpecular":	[1, 1, 1, 1],
 		"Shininess":	200,
 		"Blend":	0

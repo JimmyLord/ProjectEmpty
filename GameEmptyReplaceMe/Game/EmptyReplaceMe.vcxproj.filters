@@ -520,5 +520,11 @@
     <None Include="Data\Shaders\Shader_TintColor.glsl">
       <Filter>Data\Shaders</Filter>
     </None>
+    <None Include="Data\Materials\DarkGray.mymaterial">
+      <Filter>Data\Materials</Filter>
+    </None>
+    <None Include="Data\Materials\Shadow.mymaterial">
+      <Filter>Data\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

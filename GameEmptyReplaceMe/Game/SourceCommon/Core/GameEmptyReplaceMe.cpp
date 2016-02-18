@@ -117,7 +117,7 @@ GameEmptyReplaceMe::~GameEmptyReplaceMe()
 
     SAFE_DELETE( m_pParticleRenderer );
 
-    SAFE_DELETE( m_pSystemFont );
+    SAFE_RELEASE( m_pSystemFont );
     SAFE_DELETE( m_pResources );
     
     SAFE_DELETE( m_pGameAudio );

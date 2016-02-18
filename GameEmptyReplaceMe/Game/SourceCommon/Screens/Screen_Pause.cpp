@@ -42,12 +42,16 @@ void Screen_Pause::Init()
         MySprite* pWhiteSquare = g_pGame->m_pResources->m_pSprites[SL_WhiteSquare];
 
         MaterialDefinition* pMatGray = g_pMaterialManager->LoadMaterial( "Data/Materials/Gray.mymaterial" );
+        MaterialDefinition* pMatDarkGray = g_pMaterialManager->LoadMaterial( "Data/Materials/DarkGray.mymaterial" );
+        MaterialDefinition* pMatShadow = g_pMaterialManager->LoadMaterial( "Data/Materials/Shadow.mymaterial" );
         pButton->SetMaterial( MenuButton::Material_BG, pMatGray );
         pButton->SetMaterial( MenuButton::Material_BGDisabled, pMatGray );
         pButton->SetMaterial( MenuButton::Material_BGOverlay, pMatGray );
-        pButton->SetMaterial( MenuButton::Material_BGPressed, pMatGray );
-        pButton->SetMaterial( MenuButton::Material_Shadow, pMatGray );
+        pButton->SetMaterial( MenuButton::Material_BGPressed, pMatDarkGray );
+        pButton->SetMaterial( MenuButton::Material_Shadow, pMatShadow );
         pMatGray->Release();
+        pMatDarkGray->Release();
+        pMatShadow->Release();
 
         float yspace = fontheight * 2 * 2;
 
@@ -147,7 +151,7 @@ void Screen_Pause::Draw()
     {
         if( GetMenuItem(i) )
         {
-            GetMenuItem(i)->Draw( &g_pGame->m_OrthoMatrix );
+            GetMenuItem(i)->Draw( &g_pGame->m_OrthoMatrixGameSize );
         }
     }
 }

@@ -31,13 +31,21 @@ void GameType_EmptyReplaceMe::Init()
 {
     LOGInfo( LOGTag, "GameType_EmptyReplaceMe::Init() buttons = %d\n", m_MenuItemsNeeded );
 
+    MaterialDefinition* pMatBG = g_pMaterialManager->LoadMaterial( "Data/Materials/Gray.mymaterial" );
+    MaterialDefinition* pMatPressed = g_pMaterialManager->LoadMaterial( "Data/Materials/DarkGray.mymaterial" );
+    MaterialDefinition* pMatShadow = g_pMaterialManager->LoadMaterial( "Data/Materials/Shadow.mymaterial" );
+
     MenuItemDefinition MenuItems[IGBA_Max] =
     {
-        //name,        type,       sprite,                   bgcolor,                     font,    maxletters, str1, str2, str3,                buttonaction
-        { "Quit",      MIT_Button, SL_WhiteSquare, ColorByte(150,150,150,255), g_pGame->m_pSystemFont,   4, "Quit", 0, 0,                         IGBA_Quit }, //
+        //name,     type,       sprite,         material,           font,    maxletters, str1, str2, str3, buttonaction
+        { "Quit",   MIT_Button, SL_WhiteSquare, { pMatBG, pMatBG, pMatPressed, pMatBG, pMatShadow }, g_pGame->m_pSystemFont,   4, "Quit", 0, 0,       IGBA_Quit }, //
     };
 
     CreateMenuItems( IGBA_Max, MenuItems );
+
+    pMatBG->Release();
+    pMatPressed->Release();
+    pMatShadow->Release();
 
     Screen_Base::Init();
 }
@@ -100,7 +108,7 @@ void GameType_EmptyReplaceMe::Draw()
     {
         if( GetMenuItem(i) )
         {
-            GetMenuItem(i)->Draw( &g_pGame->m_OrthoMatrix );
+            GetMenuItem(i)->Draw( &g_pGame->m_OrthoMatrixGameSize );
         }
     }
 }

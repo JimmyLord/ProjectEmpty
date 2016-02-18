@@ -1532,7 +1532,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Layouts\allscreens.layout" />
+    <None Include="Data\Materials\DarkGray.mymaterial" />
     <None Include="Data\Materials\Gray.mymaterial" />
+    <None Include="Data\Materials\Shadow.mymaterial" />
     <None Include="Data\Shaders\Shader_Font.glsl" />
     <None Include="Data\Shaders\Shader_PointSprite.glsl" />
     <None Include="Data\Shaders\Shader_Simple.glsl" />

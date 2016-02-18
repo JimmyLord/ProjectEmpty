@@ -78,7 +78,7 @@ ResourceManager::~ResourceManager()
     SAFE_DELETE( m_pEffect_ParticleRisingGlow );
     SAFE_DELETE( m_pEffect_ParticleBurst );
 
-    SAFE_DELETE( m_pFontText );
+    SAFE_RELEASE( m_pFontText );
 }
 
 void ResourceManager::LoadAllTextures()
